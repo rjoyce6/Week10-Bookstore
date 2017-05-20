@@ -27,11 +27,7 @@ function bookstore( newUrl){
       console.log(data);
       var test = data.items[0];
 
-      var newTitle = document.createElement('h1');
-      var bookTitle = document.createTextNode(bookName);
-      newTitle.appendChild(bookTitle);
       var addHere = document.getElementById('title');
-      addHere.appendChild(newTitle);
 
       console.log(test.volumeInfo.title);
 
@@ -61,6 +57,7 @@ function bookstore( newUrl){
         var addInfoHere = document.getElementById(divCol.id)
         addInfoHere.appendChild(divInfo);
 
+        // Add Authors name
         var pAuthor = document.createElement('p');
         pAuthor.className = 'author';
         var pText = document.createTextNode('by ' + data.items[i].volumeInfo.authors);
@@ -68,12 +65,14 @@ function bookstore( newUrl){
         pAuthor.appendChild(pText);
         addPHere.appendChild(pAuthor);
 
+        // Add description
         var pDescription = document.createElement('p');
         pDescription.className = 'description';
         var pText = document.createTextNode(data.items[i].volumeInfo.description);
         pDescription.appendChild(pText);
         addPHere.appendChild(pDescription);
 
+        // Add list price
         if(data.items[i].saleInfo.hasOwnProperty('listPrice') ){
           var price = document.createElement('p');
           price.className = 'price';
@@ -83,9 +82,6 @@ function bookstore( newUrl){
           addPHere.appendChild(price);
         }
       }
-      // console.log("description:" + test.volumeInfo.description);
-      // console.log("author:" + test.volumeInfo.authors);
-      // console.log("price:" + test.saleInfo.listPrice.amount);
     }
   })
 }
